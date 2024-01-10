@@ -1,0 +1,41 @@
+.title-component {
+    font-family: monospace;
+}
+
+.card-text {
+    text-align: justify;
+    margin: 35px;
+}
+
+.card-header {
+    width: 100%;
+}
+
+.logo {
+    width: 210px;
+    height: 225px;
+    display: block;
+    margin: auto;
+}
+
+#tarjeta {
+    background-color: #838282;
+}
+
+#titulo_tarjeta {
+    margin: 20px;
+    color: #1e0067;
+}
+
+@media (max-width: 750px) {
+
+    .title-component {
+        text-align: center;
+    }
+
+    #content {
+        background-color: #fafafa;
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+}

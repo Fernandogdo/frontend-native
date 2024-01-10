@@ -1,0 +1,151 @@
+.title-component {
+    margin-bottom: 30px;
+    font-family: monospace;
+    margin-bottom: 30px;
+}
+
+.example-header-image {
+    display: block;
+    margin: 0 auto;
+
+    background-image: url("../../../assets/img/native-white.jpeg");
+    background-size: 100%;
+}
+
+.img-native {
+    max-width: 50%;
+    height: 70px;
+    border: 20%;
+}
+
+form {
+    width: 100%;
+}
+
+.login-content {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-toolbar {
+    justify-content: center;
+}
+
+.buscador {
+    margin-bottom: 20px;
+    // background-color: #838282;
+    color: #1e0067;
+}
+
+form {
+    width: 100%;
+}
+
+.login-content {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-toolbar {
+    justify-content: center;
+}
+
+.mat-form-field {
+    width: 100%;
+    display: block;
+}
+
+.mat-raised-button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#btnEliminar {
+    margin: 10px;
+    background: red;
+}
+
+#tarjetaGeneral {
+    display: inline;
+}
+
+table {
+    background-color: #838282;
+}
+
+td,
+th {
+    width: 10%;
+}
+
+td {
+    color: #1e0067;
+}
+
+.title-col {
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.txt-col {
+    color: #1e0067;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 17px;
+    font-style: oblique;
+}
+
+.select {
+    width: 100%;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.mobile-label {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .title-component {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    #content {
+        // background-color: #fafafa;
+        margin: -2.5rem;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #rol-user {
+        display: none;
+    }
+
+    .mobile-label {
+        width: 100%;
+        display: inline-block;
+        font-weight: bold;
+        text-align: justify;
+    }
+
+    #user{
+        margin-left: -22px;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row {
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 24px;
+    }
+}

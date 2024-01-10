@@ -1,0 +1,98 @@
+.title-component{
+    margin-bottom: 30px;
+    font-family: monospace;
+}
+
+h5, h6{
+    color: black;
+}
+
+
+.btnBackSale{
+    margin-bottom: 20px;
+    background-color: #263238;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+    
+}
+
+.input-text{
+    color: #1E0067;
+
+}
+
+mat-card{
+    // background: #838282;
+    color: #263238;
+}
+
+.title-col{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.txt-col{
+    color: #1E0067;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    font-style: oblique;
+}
+
+#total-sale{
+    color: #1E0067;;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+}
+
+
+td {
+    padding-right: 10px;
+    width: 10%;
+}
+
+// td,
+// th {
+//     width: 20%;
+// }
+
+.btn-venta {
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+// .example-container .mat-form-field + .mat-form-field {
+//     margin-left: 8px;
+// }
+.card-table{
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    // background: #838282;
+
+}
+
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 25%;
+}

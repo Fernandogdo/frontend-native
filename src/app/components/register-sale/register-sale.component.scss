@@ -1,0 +1,209 @@
+.title-component {
+    margin-bottom: 30px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.card-sale {
+    margin-bottom: 20px;
+    background: #eaeaea;
+}
+
+td {
+    padding-right: 10px;
+    width: 40%;
+}
+
+.btnRegisterSale {
+    background-color: #263238;
+}
+
+.btn-venta {
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.chart-container {
+    display: grid;
+    height: 150px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.txt-col {
+    color: #1e0067;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 17px;
+    font-style: oblique;
+}
+
+.table-add-products {
+    background: #eaeaea;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mobile-form {
+    display: none;
+}
+
+.btnAddProduct {
+    background-color: #263238;
+}
+
+td,
+th {
+    width: 20%;
+}
+
+// @media screen and (max-width: 750px) {
+//     .title-component {
+//         text-align: center;
+//         margin-top: -20px;
+//     }
+
+//     .form-pc {
+//         display: none;
+//     }
+
+//     .mobile-form {
+//         display: block;
+//         margin-top: 20px;
+//     }
+
+//     #content {
+//         background-color: #fafafa;
+//         margin: -2.5rem;
+//         text-align: center;
+//         margin-bottom: 15px;
+//     }
+
+//     #element-text {
+//         width: 20px;
+//         display: inline-block;
+//     }
+
+//     .table-add-products{
+//         margin-top: 40px;
+//     }
+
+//     .btnRegisterSale {
+//         margin-bottom: 20px;
+//     }
+
+//     .title-col {
+//         display: none;
+//     }
+
+//     mat-header-cell,
+//     mat-cell {
+//         width: 100%;
+//     }
+// }
+
+@media screen and (max-width: 750px) {
+    .title-component {
+        text-align: center;
+        margin-top: -20px;
+    }
+
+    .title-col {
+        display: none;
+    }
+
+    #description-col {
+        display: none;
+    }
+
+    .form-pc {
+        display: none;
+    }
+
+    .mobile-form {
+        display: block;
+        margin-top: 20px;
+    }
+
+    #content {
+        background-color: #fafafa;
+        margin: -2.5rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .table-add-products {
+        margin-top: 40px;
+    }
+
+    .btnRegisterSale {
+        margin-bottom: 20px;
+    }
+
+    #total-sale {
+        color: #1e0067;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 15px;
+        font-style: oblique;
+    }
+    .image-product {
+        width: 25%;
+        height: 45px;
+    }
+    .mat-table {
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .mat-table caption {
+        font-size: 1em;
+    }
+
+    .mat-table .mat-row {
+        margin: 10px;
+        border-bottom: 5px solid #ddd;
+        display: block;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    .mat-table .mat-cell {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        font-weight: normal;
+        height: 30px;
+        margin-bottom: 4%;
+    }
+    .mat-table .mat-cell:before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.85em;
+    }
+    .mat-table .mat-cell:last-child {
+        border-bottom: 2;
+    }
+    .mat-table .mat-cell:first-child {
+        margin-top: 4%;
+    }
+
+    .relleno {
+        display: none;
+    }
+}

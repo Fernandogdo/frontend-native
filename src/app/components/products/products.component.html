@@ -1,0 +1,141 @@
+<!-- <div class="main-content"> -->
+<!-- <div class="container-fluid"> -->
+<h2 class="title-component">Productos</h2>
+
+<div class="col-md-12">
+    <div class="container" id="formulario">
+        <div class="col text-center">
+            <button mat-raised-button class="btn-generate-report" color="primary" (click)="generateCsv()">
+                <mat-icon>
+                    file_download
+                </mat-icon>
+                Reporte CSV
+            </button>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="mat-elevation-z8" id="content">
+        <mat-card class="buscador">
+            <b>Buscador:</b>
+            <mat-form-field appearance="standard">
+                <mat-label>Filtro Productos</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Miel" #input>
+            </mat-form-field>
+        </mat-card>
+
+
+        <mat-table [dataSource]="dataSource" id="table">
+            <!-- ID Column -->
+            <ng-container matColumnDef="image">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Imágen</b>
+                    </div>
+                    
+                </mat-header-cell>
+                <mat-cell class="txt-col" id="imagen" *matCellDef="let product" data-label="Imágen">
+                    <div class="col text-center">
+                        <img class="image-product" [src]="product.imagePath" alt=product.title>
+                    </div>
+                </mat-cell>
+                <!-- <mat-footer-cell class="txt-col" *matFooterCellDef="let product">
+                    {{product.stock}}
+                </mat-footer-cell> -->
+            </ng-container>
+
+            <!-- Progress Column -->
+            <ng-container matColumnDef="title">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Título</b>
+                    </div>
+                </mat-header-cell>
+                <mat-cell class="txt-col" *matCellDef="let product" data-label="Título"> 
+                    <div class="col text-center">
+                        {{product.title}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="category">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Categoria</b>
+                    </div>
+                </mat-header-cell>
+                <mat-cell class="txt-col" *matCellDef="let product" data-label="Categoría">
+                    <div class="col text-center">
+                        {{product.category.title}} 
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="price">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Precio</b>
+                    </div>
+                </mat-header-cell>
+                <mat-cell class="txt-col" *matCellDef="let product" data-label="Precio"> 
+                    <div class="col text-center">
+                        {{product.price|currency}} 
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="stock">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Stock</b>
+                    </div>
+                </mat-header-cell>
+                <mat-cell class="txt-col" *matCellDef="let product" data-label="Stock">
+                    <div class="col text-center">
+                        {{product.stock}} 
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="opciones">
+                <mat-header-cell class="title-col" *matHeaderCellDef mat-sort-header> 
+                    <div class="col text-center">
+                        <b>Opciones</b>
+                    </div>
+                </mat-header-cell>
+                <mat-cell class="txt-col" *matCellDef="let product" data-label="Opciones">
+                    <div class="col text-center">
+
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item
+                                (click)="ModalEditProduct(product._id, product.title, product.category, product.description, product.price, product.purchase_price, product.stock)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+                            <button mat-menu-item (click)="deleteProduct(product._id, product.title)">
+                                <mat-icon>delete</mat-icon>
+                                <span>Eliminar</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row class="title-col" *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row class="txt-col" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <!-- <mat-footer-row *matFooterRowDef="displayedVatColumns"></mat-footer-row> -->
+
+        </mat-table>
+
+        <mat-paginator id="paginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+    </div>
+    <br>
+</div>

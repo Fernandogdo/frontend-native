@@ -1,0 +1,205 @@
+.title-component {
+    margin-bottom: 30px;
+    font-family: monospace;
+    margin-bottom: 30px;
+}
+
+.btn-generate-report {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    // margin-bottom: 20px;
+    margin-bottom: 5px;
+    background-color: #003f72;
+}
+
+#btn-alert {
+    background: #838282;
+    margin: 15px;
+}
+
+// #contenido {
+//     background: #838282;
+// }
+
+.btn-venta {
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #263238;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.title-col {
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.txt-col {
+    color: #1e0067;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 17px;
+    font-style: oblique;
+}
+
+.image-product {
+    max-width: 40%;
+    max-height: 40%;
+    border-top-left-radius: 60% 60%;
+    border-top-right-radius: 60% 60%;
+    border-bottom-right-radius: 60% 60%;
+    border-bottom-left-radius: 60% 60%;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+#total-sale {
+    color: #1e0067;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+}
+
+// mat-cell,
+// .txt-col, .title-col {
+//     width: 100%;
+// }
+
+.total-sale{
+    font-style:oblique;
+    font-weight: bold;
+    text-align: center;
+}
+
+mat-cell {
+    padding-right: 8px;
+}
+
+
+.sales{
+    color: #838282;
+}
+
+.earnings{
+    color: green;
+}
+
+.spends {
+    color: red;
+}
+
+.total_sale{
+    color: #838282;
+}
+
+.total_spends {
+    color: red;
+}
+
+@media screen and (max-width: 750px) {
+    .title-component {
+        text-align: center;
+    }
+
+    #btn-alert {
+        margin-bottom: 50px;
+    }
+
+    // .btn-venta{
+    //     display: none;
+    // }
+
+    #content {
+        background-color: #fafafa;
+        margin: -2.5rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    #filtro {
+        margin-bottom: 30px;
+    }
+
+    mat-header-cell,
+    mat-cell {
+        width: 100%;
+    }
+
+    #title {
+        margin-top: 8px;
+        margin-left: -22px;
+    }
+
+    .title-col {
+        display: none;
+    }
+
+    #description-col{
+        display: none;
+    }
+
+    #total-sale {
+        color: #1e0067;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 15px;
+        font-style: oblique;
+    }
+    .image-product {
+        width: 25%;
+        height: 45px;
+    }
+    .mat-table {
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .mat-table caption {
+        font-size: 1em;
+    }
+
+    .mat-table .mat-row {
+        margin: 10px;
+        border-bottom: 5px solid #ddd;
+        display: block;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    .mat-table .mat-cell {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        font-weight: normal;
+        height: 30px;
+        margin-bottom: 4%;
+    }
+    .mat-table .mat-cell:before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.85em;
+    }
+    .mat-table .mat-cell:last-child {
+        border-bottom: 2;
+    }
+    .mat-table .mat-cell:first-child {
+        margin-top: 4%;
+    }
+
+    .relleno {
+        display: none;
+    }
+}

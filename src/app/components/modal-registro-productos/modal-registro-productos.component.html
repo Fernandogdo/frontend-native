@@ -1,0 +1,95 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container" id="formulario">
+                    <div class="col text-center">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title>Registrar Producto</mat-card-title>
+                                <mat-card-subtitle class="subtitle">Productos NativeEc</mat-card-subtitle>
+                            </mat-card-header>
+
+                            <mat-card-content>
+                                <form (submit)="uploadPhoto(title, category, description, price, purchase_price, stock)">
+                                    <input type="hidden" value={{idCategory}} #category>
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <input id="input" matInput value= {{titleCategory}} disabled>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <mat-label id="input-label">Producto</mat-label>
+                                        <input id="input" matInput placeholder="Ej. Miel Native" required #title>
+                                        <mat-icon matSuffix>production_quantity_limits</mat-icon>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <mat-label id="input-label">Stock</mat-label>
+                                        <input id="input" type="number" matInput placeholder="5" required
+                                            #stock>
+                                        <mat-icon matSuffix>inventory</mat-icon>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <mat-label id="input-label">Precio Venta</mat-label>
+                                        <input id="input" type="number" matInput placeholder="3.5" required
+                                            #price>
+                                        <mat-icon matSuffix>money</mat-icon>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <mat-label id="input-label">Precio Compra</mat-label>
+                                        <input id="input" type="number" matInput placeholder="3.5" required
+                                            #purchase_price>
+                                        <mat-icon matSuffix>money</mat-icon>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="input-formulario" appearance="outline">
+                                        <mat-label id="input-label">Descripción Producto</mat-label>
+                                        <textarea id="input" matInput
+                                            placeholder="Ej. Esta categoria contiene productos como vinos..." required
+                                            #description></textarea>
+                                        <mat-icon matSuffix>description</mat-icon>
+                                    </mat-form-field>
+
+                                    <div class="form-group">
+                                        <input type="file" class="d-none" (change)="onPhotoSelected($event)"
+                                            #photoInput>
+                                        <img [src]="photoSelected ||'../../../assets/img/upload-image.png'" class="img-fluid"
+                                            id="imageSelected" (click)="photoInput.click()">
+                                    </div>
+
+                                    <div class="col text-center">
+                                        <!-- <button mat-raised-button class="botones" color="primary">Agregar</button> -->
+                                        <button mat-raised-button class="btn-save" color="primary"
+                                                (click)="onNoClick()" cdkFocusInitial>
+                                                <mat-icon>
+                                                    save
+                                                </mat-icon>
+                                                Agregar
+                                            </button>
+                                            <button mat-raised-button mat-dialog-close color="warn">
+                                                <mat-icon>
+                                                    close
+                                                </mat-icon>
+                                                Cerrar
+                                            </button>
+                                    </div>
+                                </form>
+                            </mat-card-content>
+
+
+                            <!-- </mat-card-content> -->
+                            <!-- <mat-card-actions>
+                                <div class="col text-center">
+                                    <button mat-raised-button class="botones" color="primary">Agregar</button>
+                                </div>
+                            </mat-card-actions> -->
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

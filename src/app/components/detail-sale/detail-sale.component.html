@@ -1,0 +1,126 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <h2 class="title-component">Detalle de Venta</h2>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="container" id="formulario">
+                    <div class="col text-center">
+                        <button mat-raised-button class="btnBackSale" color="primary" routerLink="/sale">
+                            <mat-icon>
+                                arrow_back
+                            </mat-icon>
+                            Regresar a Ventas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="mat-elevation-z8">
+
+                    <mat-card>
+                        <form>
+                            <table class="example-full-width" cellspacing="1">
+                                <tr>
+                                    <td>
+                                        <h6> <b>Título</b> </h6>
+                                        <mat-form-field appearance="fill">
+                                            <input class="input-text" matInput [value]=titleSale disabled>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <h6> <b>Descripción</b> </h6>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <input class="input-text" matInput type="textarea" [value]=descriptionSale
+                                                disabled>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <h6> <b>Fecha</b> </h6>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <input class="input-text" matInput [value]=dateSale disabled>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </mat-card>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="mat-elevation-z8">
+                    <mat-card class="card-table">
+                        <h5> <b>Detalles de Venta</b> </h5>
+                        <table mat-table [dataSource]="dataSource">
+                            <div class="col text-center">
+                                <button mat-raised-button class="btnCreaPersonalizado" color="primary">
+                                    <span class="material-icons">
+                                        add_circle_outline
+                                    </span>
+                                    Registrar Venta
+                                </button>
+                            </div>
+
+                            <!-- Title Column -->
+                            <ng-container matColumnDef="title">
+                                <div class="col text-center">
+                                    <th class="title-col" mat-header-cell *matHeaderCellDef> <b>Producto</b> </th>
+                                    <td class="txt-col" mat-cell *matCellDef="let element">
+                                        {{element.title}}
+                                    </td>
+                                    <td id="total-sale" mat-footer-cell *matFooterCellDef> <b>Total</b> </td>
+                                </div>
+                            </ng-container>
+
+
+                            <!-- Description Column -->
+                            <ng-container matColumnDef="price_purchase">
+                                <th class="title-col" mat-header-cell *matHeaderCellDef> <b>Precio de Compra</b> </th>
+                                <td class="txt-col" mat-cell *matCellDef="let element"> {{element.purchase_price | currency}}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>-</td>
+                            </ng-container>
+
+                            <!-- Price Column -->
+                            <ng-container matColumnDef="price_sale">
+                                <th class="title-col" mat-header-cell *matHeaderCellDef> <b>Precio de Venta</b> </th>
+                                <td class="txt-col" mat-cell *matCellDef="let element"> {{element.price | currency}}
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>-</td>
+                            </ng-container>
+
+
+
+
+                            <!-- Date Column -->
+                            <ng-container matColumnDef="date">
+                                <th class="title-col" mat-header-cell *matHeaderCellDef> <b>Cantidad</b> </th>
+                                <td class="txt-col" mat-cell *matCellDef="let element"> {{element.quantity}} vendidos
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>-</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="total">
+                                <th class="title-col" mat-header-cell *matHeaderCellDef> <b>SubTotal</b> </th>
+                                <td class="txt-col" mat-cell *matCellDef="let element"> {{element.price *
+                                    element.quantity | currency}}
+                                </td>
+                                <td class="txt-col" mat-footer-cell *matFooterCellDef>{{getTotalCost() | currency}}</td>
+                            </ng-container>
+
+
+                            <!-- Details Column -->
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                        </table>
+                    </mat-card>
+                    <mat-paginator id="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<h2 class="title-component">Lista de Usuarios</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="mat-elevation-z8" id="content">
+
+            <mat-card class="buscador">
+                <b>Buscador:</b>
+                <mat-form-field appearance="standard">
+                    <mat-label>Búsqueda de Usuarios</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Miel" #input>
+                </mat-form-field>
+            </mat-card>
+
+            <mat-table [dataSource]="dataSource">
+
+                <!-- Nombre usuario -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Nombre de Usuario</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element">
+                        <span class="mobile-label" id="user">Usuario:</span>
+                        <div class="col text-center">
+                            {{element.name}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Email Usuario</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element">
+                        <span class="mobile-label">Email: </span>
+                        <div class="col text-center">
+                            {{element.email}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- ROl Column -->
+                <ng-container matColumnDef="role">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Rol de Usuario</b>
+
+                        </div>
+
+                    </mat-header-cell>
+
+
+                    <mat-cell class="txt-col" *matCellDef="let element" id="rol-user">
+                        <div class="col text-center">
+                            <mat-form-field   appearance="fill">
+                                <mat-label>Escoger Rol</mat-label>
+                                <div class="col text-center">
+                                    <mat-select [(ngModel)]="element.role" (selectionChange)="roleChange(element)">
+                                        <mat-option class="txt-col" value="ADMIN_ROLE">ADMIN_ROLE</mat-option>
+                                        <mat-option class="txt-col" value="USER_ROLE">USER_ROLE</mat-option>
+                                    </mat-select>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- OPtions Column -->
+                <ng-container matColumnDef="options">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Opciones</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element">
+                        <span class="mobile-label">Opciones:</span>
+
+                        <div class="col text-center">
+                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>settings</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+
+                                <button mat-menu-item (click)="deleteUser(element.uid)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Eliminar</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row class="title-col" *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row class="txt-col" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+            </mat-table>
+
+            <mat-paginator id="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

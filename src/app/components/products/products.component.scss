@@ -1,0 +1,142 @@
+.main-content {
+    width: 100%;
+}
+
+.buscador {
+    margin-top: 20px;
+}
+
+// display: tab
+
+.title-component {
+    margin-bottom: 30px;
+    font-family: monospace;
+}
+
+.btn-generate-report {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    margin-bottom: 20px;
+    background-color: #003f72;
+}
+
+mat-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.title-col {
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.txt-col {
+    color: #1e0067;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 17px;
+    font-style: oblique;
+}
+
+.image-product {
+    max-width: 35%;
+    border-top-left-radius: 60% 60%;
+    border-top-right-radius: 60% 60%;
+    border-bottom-right-radius: 60% 60%;
+    border-bottom-left-radius: 60% 60%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+mat-header-cell,
+mat-cell {
+    width: 20%;
+}
+
+#content{
+    margin-bottom: 20px;
+}
+
+
+//Vista para celulares
+@media screen and (max-width: 750px) {
+    .title-component {
+        text-align: center;
+    }
+
+    .btn-generate-report{
+        margin-bottom: 35px;
+    }
+
+    #content {
+        background-color: #fafafa;
+        margin: -2.5rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    mat-header-cell,
+    mat-cell {
+        width: 100%;
+    }
+
+    #imagen{
+        margin-top: 8px;
+        margin-left: -22px;
+    }
+    .title-col {
+        display: none;
+    }
+
+    .image-product {
+        width: 25%;
+        height: 45px;
+    }
+    .mat-table {
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .mat-table caption {
+        font-size: 1em;
+    }
+
+    .mat-table .mat-row {
+        margin: 10px;
+        border-bottom: 5px solid #ddd;
+        display: block;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    .mat-table .mat-cell {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        font-weight: normal;
+        height: 30px;
+        margin-bottom: 4%;
+    }
+    .mat-table .mat-cell:before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.85em;
+    }
+    .mat-table .mat-cell:last-child {
+        border-bottom: 2;
+    }
+    .mat-table .mat-cell:first-child {
+        margin-top: 4%;
+    }
+}

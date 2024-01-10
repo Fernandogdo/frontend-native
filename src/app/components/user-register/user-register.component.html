@@ -1,0 +1,68 @@
+<div class="login-container">
+    <div class="login-content">
+        <mat-card class="card-login">
+            <mat-card-header>
+                <div class="col text-center">
+                    <mat-card-title>
+                        <b>
+                            Registro de Usuarios
+                        </b>
+                    </mat-card-title>
+
+                    <mat-card-subtitle>
+                        <img class="img-native" src="../../../assets/img/native-white.jpeg" alt="">
+                    </mat-card-subtitle>
+                </div>
+
+            </mat-card-header>
+
+            <form novalidate [formGroup]="registerForm" (ngSubmit)="createUser()">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput placeholder="usuario@utpl.edu.ec" formControlName="name">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="usuario@utpl.edu.ec" formControlName="email">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password">
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirmar Contraseña</mat-label>
+                    <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password2">
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col text-danger">
+                        <p *ngIf="fielNoValid('name')">El nombre es obligatorio</p>
+                        <p *ngIf="fielNoValid('email')">El email es obligatorio</p>
+                        <p *ngIf="passwordNoValid()">* Las contraseñas deben ser iguales</p>
+
+                    </div>
+                </div>
+
+                <button type="submit" mat-raised-button color="primary">
+                    Registrar
+                </button>
+
+            </form>
+            <br>
+            <div class="col text-center">
+                <p>
+                    <a href="" [routerLink]="['login']" routerLinkActive="active">Iniciar Sesión</a>
+                </p>
+            </div>
+
+        </mat-card>
+    </div>
+</div>

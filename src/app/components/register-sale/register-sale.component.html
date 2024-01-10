@@ -1,0 +1,348 @@
+<!-- <div class="main-content">
+    <div class="container-fluid"> -->
+<h2 class="title-component">Registro de Ventas</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="mat-elevation-z8" id="content">
+
+            <!-- REGISTRO DE VENTAS DESDE PC -->
+            <form class="form-pc">
+                <mat-card class="card-sale">
+
+                    <table class="example-full-width" cellspacing="1">
+                        <tr>
+                            <td class="element-text">
+                                <h6>Título</h6>
+                                <mat-form-field appearance="fill">
+                                    <input matInput [value]="title" [(ngModel)]="title"
+                                        [ngModelOptions]="{standalone: true}" required>
+                                </mat-form-field>
+                            </td>
+                            <td class="element-text">
+                                <h6>Descripción</h6>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <!-- <mat-label></mat-label> -->
+                                    <input matInput [value]="description" [(ngModel)]="description"
+                                        [ngModelOptions]="{standalone: true}" required>
+                                </mat-form-field>
+                            </td>
+                            <td class="element-text">
+                                <div class="col text-center">
+                                    <button mat-raised-button class="btnRegisterSale" color="primary" *ngIf="disabled"
+                                        (click)="postSale()">
+                                        <span class="material-icons">
+                                            save
+                                        </span>
+                                        Registrar Venta
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-card>
+
+                <mat-card class="card-sale">
+                    <div class="chart-container">
+                        <table class="example-full-width" cellspacing="1">
+                            <tr>
+                                <td>
+                                    <h6>Productos</h6>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Seleccionar Producto</mat-label>
+                                        <mat-select [(ngModel)]="opcionSeleccionada"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (selectionChange)="myChange($event.value)">
+                                            <mat-option [value]="item._id" *ngFor="let item of arrayProducts">
+                                                {{item.title}} {{item.price | currency}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-hint align="end">Lista de productos ^</mat-hint>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <h6>Stock Producto</h6>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <!-- <mat-label></mat-label> -->
+                                        <input matInput [value]="stock" disabled [(ngModel)]="stock"
+                                            [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <h6>Cantidad</h6>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Ingrese la cantidad vendida</mat-label>
+                                        <input matInput type="number" [disabled]=disabledQuantity [(ngModel)]="cantidad"
+                                            [ngModelOptions]="{standalone: true}">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="col text-center">
+                                        <button *ngIf=cantidad mat-raised-button class="btnAddProduct" color="primary"
+                                            (click)="addProduct(cantidad)">
+                                            <span class="material-icons">
+                                                add_circle_outline
+                                            </span>
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card>
+            </form>
+
+
+            <!-- REGISTRO DE VENTAS DESDE MOVILES -->
+            <mat-card class="mobile-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Título de la Venta</mat-label>
+                    <input matInput [value]="title" [(ngModel)]="title" [ngModelOptions]="{standalone: true}" required>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Título</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción de la Venta</mat-label>
+                    <input matInput [value]="description" [(ngModel)]="description"
+                        [ngModelOptions]="{standalone: true}" required>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Descripción</mat-hint>
+                </mat-form-field>
+
+                <div class="col text-center">
+                    <button mat-raised-button class="btnRegisterSale" color="primary" *ngIf="disabled"
+                        (click)="postSale()">
+                        <span class="material-icons">
+                            save
+                        </span>
+                        Registrar Venta
+                    </button>
+                </div>
+                <br>
+                <h6>Productos</h6>
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccionar Producto</mat-label>
+                    <mat-select [(ngModel)]="opcionSeleccionada" [ngModelOptions]="{standalone: true}"
+                        (selectionChange)="myChange($event.value)">
+                        <mat-option [value]="item._id" *ngFor="let item of arrayProducts">
+                            {{item.title}} {{item.price | currency}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Lista de productos ^</mat-hint>
+                </mat-form-field>
+
+                <br>
+                <br>
+                <h6>Stock Producto</h6>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <!-- <mat-label></mat-label> -->
+                    <input matInput [value]="stock" disabled [(ngModel)]="stock" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <h6>Cantidad</h6>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Ingrese la cantidad vendida</mat-label>
+                    <input matInput type="number" [disabled]=disabledQuantity [(ngModel)]="cantidad"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <div class="col text-center">
+                    <button *ngIf=cantidad mat-raised-button class="btnAddProduct" color="primary"
+                        (click)="addProduct(cantidad)">
+                        <span class="material-icons">
+                            add_circle_outline
+                        </span>
+                        Agregar
+                    </button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="example-container mat-elevation-z8" id="content">
+
+            <mat-table [dataSource]="dataSource" class="table-add-products">
+
+                <div class="col text-center">
+                    <button mat-raised-button class="btnCreaPersonalizado" color="primary" (click)="postSale()">
+                        <span class="material-icons">
+                            add_circle_outline
+                        </span>
+                        Registrar Venta
+                    </button>
+                </div>
+
+                <ng-container matColumnDef="opciones">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Opciones </b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element">
+                        <div class="col text-center">
+                            <button mat-icon-button (click)="deleteElementProducts(element.id)"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Producto </b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Producto:"> 
+                        <div class="col text-center">
+                            {{element.title}} 
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                 <!-- Purchase Price Column -->
+                 <ng-container matColumnDef="purchase_price">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Precio Compra</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Precio:"> 
+                        <div class="col text-center">
+                            {{element.purchase_price}} 
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Price Column -->
+                <ng-container matColumnDef="price">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Precio Venta</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Precio:"> 
+                        <div class="col text-center">
+                            {{element.price}} 
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                
+
+                <!-- Quantity Column -->
+                <ng-container matColumnDef="date">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Cantidad </b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Cantidad:"> 
+                        <div class="col text-center">
+                            {{element.quantity}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Total Column -->
+                <ng-container matColumnDef="totalSale">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>SubTotal Ventas</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Subtotal Ventas:"> 
+                        <div class="col text-center">
+                            {{element.price * element.quantity | currency}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="totalPurchase">
+                    <mat-header-cell mat-header-cell *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>SubTotal Costo Productos</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell mat-cell *matCellDef="let element" data-label="Subtotal Costo Productos:"> 
+                        <div class="col text-center">
+                            {{element.purchase_price * element.quantity | currency}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Footer Table -->
+                <ng-container matColumnDef="Total">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span>Total</span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">-</span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno1">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">-</span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno2">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">-</span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno3">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">-</span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="TotalSale">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            {{getTotalCostSale() | currency}} 
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="TotalPurchase">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            {{getTotalCostPurchase() | currency}} 
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+
+                <mat-header-row class="title-col" *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row class="txt-col" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <mat-footer-row *matFooterRowDef="displayedVatColumns"></mat-footer-row>
+            </mat-table>
+
+            <mat-paginator id="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

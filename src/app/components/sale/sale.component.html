@@ -1,0 +1,282 @@
+<h2 class="title-component">Ventas</h2>
+
+<div class="col text-center">
+    <button mat-raised-button class="btn-generate-report" color="primary" (click)="generateCsv()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">
+            file_download
+        </mat-icon>
+        Reporte Ventas
+    </button>
+    <button mat-fab id="btn-alert" (click)="alert()">
+        <mat-icon matBadge="!" matBadgeColor="primary">
+            notifications
+        </mat-icon>
+    </button>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="mat-elevation-z8" id="content">
+            <mat-card>
+                <button mat-raised-button class="btn-venta" color="primary" routerLink="/register-sale"
+                    routerLinkActive="active">
+                    <mat-icon>
+                        library_add
+                    </mat-icon>
+                    Registrar Venta
+                </button> <br>
+
+
+                <table class="example-full-width" id="filtro" cellspacing="0">
+                    <tr>
+                        <td>
+                            <b>Filtro por Años:</b>
+                            <mat-form-field appearance="fill">
+                                <mat-select (selectionChange)="filterYear($event.value)" [(ngModel)]="yearSelect"
+                                    [ngModelOptions]="{standalone: true}" placeholder={{yearSelect}}>
+                                    <mat-option [value]="year" *ngFor="let year of years">
+                                        {{year}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-hint align="end">El año por detecto es {{yearActual}} ^</mat-hint>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+                <b class="buscador">Buscador:</b>
+                <mat-form-field appearance="standard">
+                    <mat-label>Filtro Ventas</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Miel" #input>
+                </mat-form-field>
+            </mat-card>
+
+            <mat-table [dataSource]="dataSource" id="contenido">
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Título</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" id="title" *matCellDef="let element" data-label="Título:">
+                        <div class="col text-center">
+                            {{element.title}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Description Column -->
+                <ng-container matColumnDef="description">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Descripción</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" id="description-col" *matCellDef="let element" data-label="Descripción:">
+                        <div class="col text-center">
+                            {{element.description}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Date Column -->
+                <ng-container matColumnDef="date">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Fecha</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element" data-label="Fecha:">
+                        <div class="col text-center">
+                            {{element.date | date:'dd/MM/yyyy'}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total_sale">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Total Ventas Productos</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element" data-label="Total Ventas:">
+                        <div class="col text-center">
+                            <span class="sales">
+                                {{element.total | currency}}
+                                <mat-icon>
+                                    trending_flat
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total_spends">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Total Costos Productos</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element" data-label="Total Costos:">
+                        <div class="col text-center">
+                            <span class="spends">
+                                {{element.total_spends | currency}}
+                                <mat-icon>
+                                    trending_down
+                                </mat-icon>
+                            </span>
+
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total_earnings">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Total Ganancias</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element" data-label="Total Costos:">
+                        <div class="col text-center">
+                            <span class="earnings">
+                                {{ element.total - element.total_spends | currency}}
+                                <mat-icon>
+                                    trending_up
+                                </mat-icon>
+                            </span>
+
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Details Column -->
+                <ng-container matColumnDef="opciones">
+                    <mat-header-cell class="title-col" *matHeaderCellDef>
+                        <div class="col text-center">
+                            <b>Opciones</b>
+                        </div>
+                    </mat-header-cell>
+                    <mat-cell class="txt-col" *matCellDef="let element" data-label="Opciones:">
+                        <div class="col text-center">
+
+                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                aria-label="Example icon-button with a menu">
+                                <mat-icon>settings</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item [routerLink]="['/detail-sale/', element._id]"
+                                    routerLinkActive="active">
+                                    <mat-icon>visibility</mat-icon>
+                                    <span>Visualizar Detalle</span>
+                                </button>
+                                <button mat-menu-item (click)="deleteSale(element._id, element.title)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Eliminar</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Footer Total Sale-->
+                <ng-container matColumnDef="TotalSale">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+
+                        <div class="col text-center">
+                            <span class="total-sale">
+                                Total Ventas
+                            </span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">
+                                -
+                            </span>
+                        </div>
+
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="relleno2">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">
+                                -
+                            </span>
+                        </div>
+
+                    </mat-footer-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Total_sale">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="total_sale">
+                                {{ getTotalYear() | currency}}
+                                <mat-icon>
+                                    trending_flat
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Total_spends">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="total_spends">
+                                {{ getTotalSpends() | currency}}
+                                <mat-icon>
+                                    trending_down
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Total_earnings1">
+                    <mat-footer-cell id="total-sale" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="earnings">
+                                {{ getTotalEarnings() | currency}}
+                                <mat-icon>
+                                    trending_up
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </mat-footer-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="relleno3">
+                    <mat-footer-cell class="txt-col" *matFooterCellDef>
+                        <div class="col text-center">
+                            <span class="relleno">
+                                -
+                            </span>
+                        </div>
+
+                    </mat-footer-cell>
+                </ng-container>
+
+                <mat-header-row class="title-col" *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row class="txt-col" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <mat-footer-row *matFooterRowDef="displayedVatColumns"></mat-footer-row>
+                <!-- <mat-footer-row *matFooterRowDef="displayedEarningColumns"></mat-footer-row> -->
+
+
+            </mat-table>
+
+            <mat-paginator id="paginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+        </div>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" *ngIf="!category; else main_content">
+            <h3>Cargando...</h3>
+        </div>
+
+        <ng-template #main_content>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container" id="formulario">
+                        <div class="col text-center">
+                            <mat-card class="example-card">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image"></div>
+                                    <mat-card-title>Editar Categoria</mat-card-title>
+                                    <mat-card-subtitle class="subtitle">Categoria de productos NativeEc
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+
+                                <mat-card-content>
+                                    <form (submit)="updateCategory(title, description)">
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Categoria</mat-label>
+                                            <input id="input" matInput placeholder="Ej. Categoria"
+                                                [value]="category.title" #title>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Descripción Categoria</mat-label>
+                                            <textarea id="input" matInput
+                                                placeholder="Ej. Esta categoria contiene productos como vinos..."
+                                                [value]="category.description" #description></textarea>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+
+                                        <div class="form-group">
+                                            <img [src]="category.imagePath" class="img-fluid">
+                                        </div>
+
+
+                                        <div class="col text-center">
+
+                                            <button mat-raised-button class="btn-save" color="primary"
+                                                (click)="onNoClick()" cdkFocusInitial>
+                                                <mat-icon>
+                                                    save
+                                                </mat-icon>
+                                                Actualizar
+                                            </button>
+                                            <button mat-raised-button mat-dialog-close color="warn">
+                                                <mat-icon>
+                                                    close
+                                                </mat-icon>
+                                                Cerrar
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

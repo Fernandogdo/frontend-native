@@ -1,0 +1,54 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(62, 67, 94);
+    background: linear-gradient(
+        124deg,
+        rgba(62, 67, 94, 1) 0%,
+        rgba(84, 76, 59, 1) 14%,
+        rgba(111, 93, 60, 1) 26%,
+        rgba(78, 51, 58, 1) 45%,
+        rgba(106, 34, 52, 1) 65%,
+        rgba(64, 20, 30, 1) 81%,
+        rgba(97, 45, 54, 1) 100%
+    );
+}
+
+.example-header-image {
+    display: block;
+    margin: 0 auto;
+
+    background-image: url("../../../assets/img/native-white.jpeg");
+    background-size: 100%;
+}
+
+.img-native {
+    max-width: 50%;
+    height: 70px;
+}
+
+form {
+    width: 100%;
+}
+
+.login-content {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-toolbar {
+    justify-content: center;
+}
+
+.mat-form-field {
+    width: 100%;
+    display: block;
+}
+
+.mat-raised-button {
+    width: 100%;
+    margin-top: 15px;
+}

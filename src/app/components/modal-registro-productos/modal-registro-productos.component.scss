@@ -1,0 +1,45 @@
+.btnCreaPersonalizado {
+    margin-top: 15px;
+    background-color: #003f72;
+}
+
+.example-card {
+    margin-top: 20px;
+    max-width: 350px;
+    background: #eaeaea;
+}
+
+.example-header-image {
+    background-image: url("../../../assets/img/native.jpeg");
+    background-size: cover;
+}
+
+
+#imageSelected {
+    cursor: pointer;
+    
+}
+
+#imageSelected:hover {
+    border: 1px solid #333;
+}
+
+#imageSelected {
+    width: 80%;
+    height: 225px;
+    margin-bottom: 15px;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-formulario {
+    width: 100%;
+}
+
+.btn-save {
+    margin: 15px;
+}

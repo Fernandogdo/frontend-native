@@ -1,0 +1,17 @@
+<mat-toolbar class="toolbar">
+    <span class="example-spacer"></span>
+    <!-- Native Ec -->
+    <span class="example-spacer-icons"></span>
+
+
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div class="body" [ngClass]="getBodyClass()">
+
+
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,45 @@
+.btnCreaPersonalizado {
+    margin-top: 15px;
+    background-color: #003f72;
+}
+
+
+.select-product{
+    width: 100%;
+}
+
+
+#img-edit{
+    height: 200px;
+}
+.example-card {
+    margin-top: 20px;
+    max-width: 350px;
+    background: #eaeaea;
+}
+
+.example-header-image {
+    background-image: url("../../../assets/img/native.jpeg");
+    background-size: cover;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+.input-formulario{
+    width: 100%;
+}
+
+.btn-save{
+    background: #6f6e6e;
+    margin: 15px;
+}
+
+
+.btn-cancel {
+    color: #6f6e6e;
+}

@@ -1,0 +1,103 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container" id="formulario">
+                    <div class="col text-center">
+                        <div class="row" *ngIf="!product; else main_content">
+                            <h3>Cargando...</h3>
+                        </div>
+                        <ng-template #main_content>
+                            <mat-card class="example-card">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image">
+                                        <!-- <img  [src]="product.imagePath" alt=""> -->
+                                    </div>
+                                    <mat-card-title>Editar Producto</mat-card-title>
+                                    <mat-card-subtitle class="subtitle">Productos NativeEc</mat-card-subtitle>
+                                </mat-card-header>
+
+                                <mat-card-content>
+                                    <form (submit)="updateProduct(title, price, purchase_price, stock, description)">
+                                        <!-- Product -->
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Producto</mat-label>
+                                            <input id="input" matInput placeholder="Ej. Categoria"
+                                                value={{titleProduct}} required #title>
+                                            <mat-icon matSuffix>production_quantity_limits</mat-icon>
+                                        </mat-form-field>
+
+                                        <!-- CategoryProduct -->
+                                        <mat-form-field class="select-product" appearance="fill">
+                                            <mat-select [(ngModel)]="categoryProduct"
+                                                [ngModelOptions]="{standalone: true}" placeholder={{categoryProduct}}>
+                                                <mat-option [value]="category._id"
+                                                    *ngFor="let category of arrayCategories">
+                                                    {{category.title}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <!-- Stock -->
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Stock</mat-label>
+                                            <input id="input" type="number" matInput placeholder="Ej. 10"
+                                                value={{stockProduct}} required #stock>
+                                            <mat-icon matSuffix>inventory</mat-icon>
+                                        </mat-form-field>
+
+                                        <!-- Price Sale -->
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Precio Venta</mat-label>
+                                            <input id="input" type="number" matInput placeholder="Ej. 5.5"
+                                                value={{priceProduct}} required #price>
+                                            <mat-icon matSuffix>money</mat-icon>
+                                        </mat-form-field>
+
+                                        <!-- Purchase Price -->
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Precio Compra</mat-label>
+                                            <input id="input" type="number" matInput placeholder="Ej. 5.5"
+                                                value={{purchase_priceProduct}} required #purchase_price>
+                                            <mat-icon matSuffix>money</mat-icon>
+                                        </mat-form-field>
+
+                                        <!-- Description -->
+                                        <mat-form-field class="input-formulario" appearance="outline">
+                                            <mat-label id="input-label">Descripción Producto</mat-label>
+                                            <textarea id="input" matInput
+                                                placeholder="Ej. Esta categoria contiene productos como vinos..."
+                                                value={{descriptionProduct}} required #description></textarea>
+                                            <mat-icon matSuffix>description</mat-icon>
+                                        </mat-form-field>
+
+                                        <div class="form-group">
+                                            <img id="img-edit" [src]="product.imagePath" class="img-fluid">
+                                        </div>
+
+                                        <div class="col text-center">
+
+                                            <button mat-raised-button class="btn-save" color="primary"
+                                                (click)="onNoClick()" cdkFocusInitial>
+                                                <mat-icon>
+                                                    save
+                                                </mat-icon>
+                                                Actualizar
+                                            </button>
+                                            <button mat-raised-button mat-dialog-close color="warn">
+                                                <mat-icon>
+                                                    close
+                                                </mat-icon>
+                                                Cerrar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </mat-card-content>
+                            </mat-card>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
